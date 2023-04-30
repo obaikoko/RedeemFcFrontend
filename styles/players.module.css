@@ -19,7 +19,13 @@
 }
 .loading{
   width: 400px;
+  margin-top: 20%;
   margin: auto;
   align-items: center;
   text-align: center;
+}
+@media (max-width: 320px) {
+  .card{
+    margin-top: 50%;
+  }
 }

@@ -22,10 +22,11 @@ const Navbar = () => {
     <div className='mb-5'>
       <nav className='navbar  navbar-expand-lg bg-body-tertiary fixed-top '>
         <div className='container-fluid'>
+          <div></div>
           <Link className='navbar-brand' href='/'>
             REDEEM FOOTBALL CLUB
-          <br />
-          {userAuth && userAuth.fullName}
+            <br />
+            <h6>{userAuth && userAuth.fullName}</h6>
           </Link>
 
           <button

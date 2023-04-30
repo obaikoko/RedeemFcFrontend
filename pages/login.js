@@ -88,7 +88,7 @@ const login = () => {
             className={style.formInputControl}
             onChange={onChange}
           />
-          <button type='submit'>Submit</button>
+          <button type='submit' className={style.btn}>Submit</button>
           Don't have an Account?
           <Link href='/register'> Create an Account</Link>
         </div>
