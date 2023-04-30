@@ -31,17 +31,17 @@ const Details = () => {
       <div>
         {user && (
           <div className={style.card}>
-            <h3 className={style.title}>User Details - {user.name}</h3>
+            <h3 className={style.title}>Player Details </h3>
             <div>
-              <p>Username: {user.username}</p>
-              <p>Email: {user.email}</p>
-              <p>
-                Address: {user.fullName}, {user.state}
-              </p>
+              <p>Name: {user.fullName}</p>
+              <p>Nickname: {user.userName}</p>
+              <p>State Of Origin: {user.state}</p>
+              <p>Age: {user.age},</p>
+              <p>Date joined: {user.createdAt}</p>
             </div>
           </div>
         )}
-        {!user && <p>Loading user details...</p>}
+        {!user && <p className={style.loading} >Loading Player details...</p>}
       </div>
     </>
   );

@@ -71,10 +71,19 @@ const register = () => {
         <div className={style.inputItems}>
           <input
             type='text'
-            name='club'
-            id='club'
-            value={club}
-            placeholder='Set Club'
+            name='name'
+            id='name'
+            value={name}
+            placeholder='Fullname'
+            className={style.formInputControl}
+            onChange={onChange}
+          />
+          <input
+            type='text'
+            name='username'
+            id='username'
+            value={username}
+            placeholder='Username'
             className={style.formInputControl}
             onChange={onChange}
           />
@@ -98,19 +107,10 @@ const register = () => {
           />
           <input
             type='text'
-            name='username'
-            id='username'
-            value={username}
-            placeholder='Username'
-            className={style.formInputControl}
-            onChange={onChange}
-          />
-          <input
-            type='text'
-            name='name'
-            id='name'
-            value={name}
-            placeholder='Fullname'
+            name='club'
+            id='club'
+            value={club}
+            placeholder='Favourite Football Club'
             className={style.formInputControl}
             onChange={onChange}
           />
