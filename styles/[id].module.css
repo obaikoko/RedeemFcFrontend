@@ -1,0 +1,11 @@
+.title{
+    text-align: center;
+}
+.card {
+  width: 70%;
+  margin: auto;
+  padding: 5%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3) inset;
+  margin-top: 10%;
+}
+
