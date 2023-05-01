@@ -37,6 +37,7 @@ const Details = () => {
               <p>Nickname: {user.userName}</p>
               <p>State Of Origin: {user.state}</p>
               <p>Age: {user.age},</p>
+              <p>Favourite Club: {user.club}</p>
               <p>Date joined: {user.createdAt}</p>
             </div>
           </div>
