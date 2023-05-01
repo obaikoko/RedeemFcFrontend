@@ -2,18 +2,17 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 const Navbar = () => {
-  const [userAuth, setUserAuth] = useState(null);
+  const [user, setUser] = useState(false);
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem('User'));
     if (userInfo) {
-      setUserAuth(userInfo);
+      setUser(true);
     }
-  }, [userAuth]);
+  }, [user]);
 
   const logout = () => {
     localStorage.removeItem('User');
-    setUserAuth(null);
   };
 
   return (
@@ -23,8 +22,6 @@ const Navbar = () => {
           <div></div>
           <Link className='navbar-brand' href='/'>
             REDEEM FOOTBALL CLUB
-            <br />
-            <h6>{userAuth && userAuth.fullName}</h6>
           </Link>
 
           <button
@@ -72,7 +69,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className='nav-item'>
-                  {userAuth ? (
+                  {user ? (
                     <Link href='/login' className='nav-link' onClick={logout}>
                       LOGOUT
                     </Link>
