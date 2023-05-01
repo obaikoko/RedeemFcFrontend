@@ -2,20 +2,18 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 const Navbar = () => {
-  const [user, setUser] = useState(false);
   const [userAuth, setUserAuth] = useState(null);
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem('User'));
-    setUserAuth(userInfo);
     if (userInfo) {
-      setUser(true);
+      setUserAuth(userInfo);
     }
-  }, []);
+  }, [userAuth]);
 
   const logout = () => {
     localStorage.removeItem('User');
-    setUser(false);
+    setUserAuth(null);
   };
 
   return (
@@ -74,7 +72,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className='nav-item'>
-                  {user ? (
+                  {userAuth ? (
                     <Link href='/login' className='nav-link' onClick={logout}>
                       LOGOUT
                     </Link>

@@ -28,7 +28,7 @@ const Details = () => {
 
   return (
     <>
-      <div>
+      <div className={style.container}>
         {user && (
           <div className={style.card}>
             <h3 className={style.title}>Player Details </h3>
