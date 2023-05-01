@@ -141,7 +141,7 @@ const register = () => {
             className={style.formInputControl}
             onChange={onChange}
           />
-          <button className={style.btn} type='submit'>Submit</button>
+          <button type='submit'>Submit</button>
           Already have an Account?
           <Link href='/login'> Login</Link>
         </div>
