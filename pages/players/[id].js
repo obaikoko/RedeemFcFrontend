@@ -1,6 +1,7 @@
 import style from '../../styles/[id].module.css';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const Details = () => {
   const router = useRouter();
@@ -28,6 +29,9 @@ const Details = () => {
 
   return (
     <>
+      <Head>
+        <title>Redeem FC Players Details</title>
+      </Head>
       <div className={style.container}>
         {user && (
           <div className={style.card}>
@@ -42,7 +46,7 @@ const Details = () => {
             </div>
           </div>
         )}
-        {!user && <p className={style.loading} >Loading Player details...</p>}
+        {!user && <p className={style.loading}>Loading Player details...</p>}
       </div>
     </>
   );

@@ -3,6 +3,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import Link from 'next/link';
 import style from '../styles/register.module.css';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const register = () => {
   const [formData, setFormData] = useState({
@@ -61,12 +62,15 @@ const register = () => {
 
   return (
     <div>
+      <Head>
+        <title>Redeem FC Registration</title>
+      </Head>
       <form className={style.registerForm} onSubmit={onSubmit}>
         <div className={style.title}>
           <h1>
             <FaUserAlt />
           </h1>
-          <p>Create an Account</p>
+          <p>Register Player</p>
         </div>
         <div className={style.inputItems}>
           <input
@@ -141,7 +145,9 @@ const register = () => {
             className={style.formInputControl}
             onChange={onChange}
           />
-          <button type='submit' className={style.btn}>Submit</button>
+          <button type='submit' className={style.btn}>
+            Submit
+          </button>
           Already have an Account?
           <Link href='/login'> Login</Link>
         </div>

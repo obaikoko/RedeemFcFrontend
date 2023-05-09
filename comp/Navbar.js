@@ -1,19 +1,10 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 const Navbar = () => {
-  const [user, setUser] = useState(false);
 
-  useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem('User'));
-    if (userInfo) {
-      setUser(true);
-    }
-  }, [user]);
-
-  const logout = () => {
-    localStorage.removeItem('User');
-  };
+  const {data: session} = useSession()
 
   return (
     <div className='mb-5'>
@@ -21,7 +12,8 @@ const Navbar = () => {
         <div className='container-fluid'>
           <div></div>
           <Link className='navbar-brand' href='/'>
-            REDEEM FOOTBALL CLUB
+            REDEEM FOOTBALL CLUB <br />
+            {session && session.user.name}
           </Link>
 
           <button
@@ -69,12 +61,15 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className='nav-item'>
-                  {user ? (
-                    <Link href='/login' className='nav-link' onClick={logout}>
+                  {session ? (
+                    <Link href='/home' className='nav-link' onClick={(e) => {
+                      e.preventDefault()
+                      signOut()
+                    }}>
                       LOGOUT
                     </Link>
                   ) : (
-                    <Link href='/login' className='nav-link'>
+                    <Link href='/api/auth/signin' className='nav-link'>
                       LOGIN
                     </Link>
                   )}

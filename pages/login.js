@@ -3,8 +3,12 @@ import { FaUserAlt } from 'react-icons/fa';
 import Link from 'next/link';
 import style from '../styles/register.module.css';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 const login = () => {
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -62,6 +66,9 @@ const login = () => {
 
   return (
     <div>
+      <Head>
+        <title>Redeem FC Login</title>
+      </Head>
       <form className={style.registerForm} onSubmit={onSubmit}>
         <div className={style.title}>
           <h1>
@@ -88,7 +95,9 @@ const login = () => {
             className={style.formInputControl}
             onChange={onChange}
           />
-          <button type='submit' className={style.btn}>Submit</button>
+          <button type='submit' className={style.btn}>
+            Submit
+          </button>
           Don't have an Account?
           <Link href='/register'> Create an Account</Link>
         </div>

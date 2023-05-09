@@ -1,21 +1,18 @@
 import Link from 'next/link';
+import Head from 'next/head';
 import React, { useState } from 'react';
 import style from '../styles/players.module.css';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 const players = () => {
+  const { data: session, status } = useSession({ required: true });
   const [players, setPlayer] = useState('');
- 
 
   const router = useRouter();
 
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem('User'));
-  
-    if (!userInfo) {
-      router.push('/login');
-    }
     loadPlayers();
   }, []);
 
@@ -24,40 +21,46 @@ const players = () => {
     const data = await res.json();
     setPlayer(data);
   };
+  if (status === 'authenticated') {
+    return (
+      <div>
+        <Head>
+          <title>Redeem FC Players</title>
+        </Head>
 
-  return (
-    <div>
-
-      {players && (
-        <div className={style.card}>
-          <div className={style.title}>
-            <h1>PLAYERS</h1>
+        {players && (
+          <div className={style.card}>
+            <div className={style.title}>
+              <h1>PLAYERS</h1>
+            </div>
+            <div className={style.container}>
+              {players &&
+                players.map((player, index) => (
+                  <Link
+                    className={style.link}
+                    href={'/players/' + player._id}
+                    key={player._id}
+                  >
+                    <p>
+                      {index + 1}) {player.fullName}
+                    </p>
+                  </Link>
+                ))}
+            </div>
+            <p>
+              If you are player and your name is not listed above kindly
+              register to add your name to the list. <br />
+              Select a player to see player's info.
+            </p>
+            <Link href='/register'>Register</Link>
           </div>
-          <div className={style.container}>
-            {players &&
-              players.map((player, index) => (
-                <Link
-                  className={style.link}
-                  href={'/players/' + player._id}
-                  key={player._id}
-                >
-                  <p>
-                    {index + 1}) {player.fullName}
-                  </p>
-                </Link>
-              ))}
-          </div>
-          <p>
-            If you are player and your name is not listed above kindly register
-            to add your name to the list. <br />
-            Select a player to see player's info.
-          </p>
-          <Link href='/register'>Register</Link>
-        </div>
-      )}
-      {!players && <p className={style.loading}>Loading players...</p>}
-    </div>
-  );
+        )}
+        {!players && <p className={style.loading}>Loading players...</p>}
+      </div>
+    );
+  } else {
+    return;
+  }
 };
 
 export default players;
