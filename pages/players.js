@@ -47,12 +47,19 @@ const players = () => {
                   </Link>
                 ))}
             </div>
-            <p>
-              If you are player and your name is not listed above kindly
-              register to add your name to the list. <br />
-              Select a player to see player's info.
-            </p>
-            <Link href='/register'>Register</Link>
+
+            {session && session.user.email === 'jesseobinna7@gmail.com' ? (
+              <Link href='/register'>Register Player</Link>
+            ) : (
+              <>
+                
+                <p>
+                  If you are player and your name is not listed above kindly
+                  contact the officials to add your name to the list. <br />
+                  Select a player to see player's info.
+                </p>
+              </>
+            )}
           </div>
         )}
         {!players && <p className={style.loading}>Loading players...</p>}
