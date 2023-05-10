@@ -1,8 +1,12 @@
-import React from 'react';
+import Head from 'next/head';
 
 const policy = () => {
   return (
     <div>
+      <Head>
+        <title>Redeem FC Players</title>
+      </Head>
+
       <div>
         <h1>Policy</h1>
         <p>
