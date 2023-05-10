@@ -52,12 +52,15 @@ const players = () => {
               <Link href='/register'>Register Player</Link>
             ) : (
               <>
-                
                 <p>
                   If you are player and your name is not listed above kindly
-                  contact the officials to add your name to the list. <br />
+                  contact the admin to add your name to the list. <br />
                   Select a player to see player's info.
                 </p>
+                <div>
+                  <Link href='/policy'>Policy</Link> <br />
+                  <Link href='/policy'>Rules and Regulations</Link>
+                </div>
               </>
             )}
           </div>

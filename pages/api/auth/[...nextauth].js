@@ -1,11 +1,5 @@
-
 import NextAuth from 'next-auth/next';
 import GoogleProvider from 'next-auth/providers/google';
-
-
-
-
-
 
 export default NextAuth({
   // Configure one or more authentication providers
@@ -27,7 +21,7 @@ export default NextAuth({
     },
     async redirect(url, baseUrl) {
       // You can modify the redirect URL here
-      
+
       return '/';
     },
     // Add more callback functions as needed

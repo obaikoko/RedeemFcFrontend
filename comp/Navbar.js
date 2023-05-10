@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
 const Navbar = () => {
-
-  const {data: session} = useSession()
+  const { data: session } = useSession();
 
   return (
     <div className='mb-5'>
@@ -13,7 +12,7 @@ const Navbar = () => {
           <div></div>
           <Link className='navbar-brand' href='/'>
             REDEEM FOOTBALL CLUB <br />
-            {session && session.user.name}
+            <p>Welcome {session && session.user.name.split(' ')[1]}</p>
           </Link>
 
           <button
@@ -62,10 +61,14 @@ const Navbar = () => {
                 </li>
                 <li className='nav-item'>
                   {session ? (
-                    <Link href='/home' className='nav-link' onClick={(e) => {
-                      e.preventDefault()
-                      signOut()
-                    }}>
+                    <Link
+                      href='/home'
+                      className='nav-link'
+                      onClick={(e) => {
+                        e.preventDefault();
+                        signOut();
+                      }}
+                    >
                       LOGOUT
                     </Link>
                   ) : (

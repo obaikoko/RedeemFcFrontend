@@ -1,6 +1,6 @@
 .container {
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-  margin-bottom:5% ;
+  margin-bottom:2% ;
 }
 .title {
   text-align: center;
@@ -22,6 +22,14 @@
   margin-top: 10%;
   align-items: center;
   text-align: center;
+}
+@media (max-width: 500px) {
+  .card{
+    margin-top: 25%;
+  }
+  .loading{
+    margin-top: 50%;
+  }
 }
 @media (max-width: 320px) {
   .card{
