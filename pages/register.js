@@ -151,7 +151,7 @@ const register = () => {
             Submit
           </button>
           Already have an Account?
-          <Link href='/login'> Login</Link>
+          <Link href='/api/auth/signin'> Login</Link>
         </div>
       </form>
     </div>
