@@ -12,7 +12,7 @@ const Navbar = () => {
           <div></div>
           <Link className='navbar-brand' href='/'>
             REDEEM FOOTBALL CLUB <br />
-            <p>Welcome {session && session.user.name.split(' ')[1]}</p>
+            <p> {session && `Welcome ${session.user.name.split(' ')[1]}`}</p>
           </Link>
 
           <button
