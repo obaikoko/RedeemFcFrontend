@@ -4,6 +4,7 @@ import Link from 'next/link';
 import style from '../styles/register.module.css';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { toast } from 'react-toastify';
 
 const register = () => {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ const register = () => {
     e.preventDefault();
 
     if (password !== password2) {
-      console.log('password do not match');
+      toast.error('password do not match');
     } else {
       const userData = {
         fullName: name,
@@ -43,8 +44,9 @@ const register = () => {
         email,
         password,
       };
-      console.log(userData);
+     
 
+      toast.success( userData.fullName + ' registered successfully')
       registeruser(userData);
 
       router.push('/');
