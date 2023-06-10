@@ -4,13 +4,14 @@ import React, { useState } from 'react';
 import style from '../styles/players.module.css';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
+import Spinner from '@/comp/Spinner';
 
-const players = () => {
+const Players = () => {
   const { data: session, status } = useSession({ required: true });
-  const [players, setPlayer] = useState('');
+  const [players, setPlayers] = useState([]);
 
-  const router = useRouter();
+  
 
   useEffect(() => {
     loadPlayers();
@@ -19,58 +20,82 @@ const players = () => {
   const loadPlayers = async () => {
     const res = await fetch('https://redeemfc.onrender.com/api/users');
     const data = await res.json();
-    setPlayer(data);
+    setPlayers(data);
   };
+
   if (status === 'authenticated') {
     return (
-      <div>
+      <div className='pt-5'>
         <Head>
           <title>Redeem FC Players</title>
         </Head>
-
-        {players && (
-          <div className={style.card}>
-            <div className={style.title}>
-              <h1>PLAYERS</h1>
-            </div>
-            <div className={style.container}>
-              {players &&
-                players.map((player, index) => (
-                  <Link
-                    className={style.link}
-                    href={'/players/' + player._id}
-                    key={player._id}
-                  >
-                    <p>
-                      {index + 1}) {player.fullName}
-                    </p>
-                  </Link>
+        <div className='card-header bg-primary text-white'>
+          <h3 className='card-title mb-0 p-3'>Redeem FC Members</h3>
+        </div>
+        {players ? (
+          <div>
+            <table className='table table-hover'>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Nick Name</th>
+                  <th>State of Origin</th>
+                  <th>Date Joined</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                {players.map((player, index) => (
+                  <tr key={player._id}>
+                    <td>
+                      [{1 + index}] {player.fullName}
+                    </td>
+                    <td>{player.userName}</td>
+                    <td>{player.state}</td>
+                    <td>{player.createdAt}</td>
+                    <td>
+                      <Link href={`players/${player._id}`}>
+                        <button className='btn btn-light text-primary'>
+                          View
+                        </button>
+                      </Link>
+                    </td>
+                  </tr>
                 ))}
-            </div>
-
+              </tbody>
+            </table>
             {session && session.user.email === 'jesseobinna7@gmail.com' ? (
-              <Link href='/register'>Register Player</Link>
+              <Link href='/register'>
+                <button className='btn btn-primary'>Register Player</button>
+              </Link>
             ) : (
               <>
                 <p>
-                  If you are player and your name is not listed above kindly
-                  contact the admin to add your name to the list. <br />
-                  Select a player to see player's info.
+                  Attention Redeem FC Players not listed above: Contact
+                  administrators to add your name for upcoming club activities.
+                  Call Administrator's Phone Number{' '}
+                  <span className='text-primary'>08029707512</span>. Your
+                  participation matters!
                 </p>
-                <div>
-                  <Link href='/policy'>Policy</Link> <br />
-                  <Link href='/policy'>Rules and Regulations</Link>
+                <div className='d-flex'>
+                  <Link href='/policy'>
+                    <button className='btn btn-sm m-3 btn-primary'>
+                      Policy, Rules and Regulations
+                    </button>
+                  </Link>
+                 
                 </div>
               </>
             )}
           </div>
+        ) : (
+          <Spinner />
         )}
-        {!players && <p className={style.loading}>Loading players...</p>}
       </div>
     );
   } else {
-    return;
+    return null;
   }
 };
 
-export default players;
+export default Players;

@@ -1,41 +1,34 @@
-.container {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-  margin-bottom:2% ;
-}
-.title {
-  text-align: center;
-}
-.card {
-  width: 100%;
-  margin: auto;
-  padding: 2%;
+/* players.module.css */
 
-  margin-top: 10%;
+.table-hover tbody tr:hover {
+  background-color: #f8f9fa;
+  transition: background-color 0.3s ease;
 }
-.link {
-  text-decoration: none;
-  color: black;
+
+.btn {
+  transition: background-color 0.3s ease;
 }
-.loading{
-  width: 400px;
-  margin: auto;
-  margin-top: 10%;
-  align-items: center;
-  text-align: center;
+
+.btn:hover {
+  background-color: #6c757d;
+  color: #fff;
+  transition: background-color 0.3s ease;
 }
-@media (max-width: 500px) {
-  .card{
-    margin-top: 25%;
-  }
-  .loading{
-    margin-top: 50%;
-  }
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
 }
-@media (max-width: 320px) {
-  .card{
-    margin-top: 50%;
-  }
-  .loading{
-    margin-top: 50%;
-  }
+
+.btn-primary:hover {
+  background-color: #0062cc;
+  border-color: #0062cc;
+}
+
+.text-primary {
+  color: #007bff;
+}
+
+.pt-5 {
+  padding-top: 3rem;
 }

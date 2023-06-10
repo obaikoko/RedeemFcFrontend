@@ -5,8 +5,6 @@ import styles from '@/styles/Home.module.css';
 const inter = Inter({ subsets: ['latin'] });
 import { useState } from 'react';
 
-
-
 export default function Home() {
   const [user, setUser] = useState('');
 
