@@ -30,7 +30,8 @@ const Players = () => {
           <title>Redeem FC Players</title>
         </Head>
         <div className='card-header bg-primary text-white'>
-          <h3 className='card-title mb-0 p-3'>Redeem FC Members</h3>
+          <h3 className='card-title mb-0 p-3'>Redeem FC Members
+          </h3>
         </div>
         {players ? (
           <div>
