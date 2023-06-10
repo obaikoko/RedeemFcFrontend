@@ -22,7 +22,7 @@ const ImageUpload = () => {
   };
   const uploadImage = async (previewSource) => {
     try {
-      await fetch(`http://localhost:5000/api/users/${id}`, {
+      await fetch(`https://redeemfc.onrender.com/api/users/${id}`, {
         method: 'PUT',
         body: JSON.stringify({ data: previewSource, name: name }),
         headers: { 'Content-type': 'application/json' },
