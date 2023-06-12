@@ -25,7 +25,7 @@ const Players = () => {
  
   if (status === 'authenticated') {
     return (
-      <div className='pt-5'>
+      <div className='pt-5 bg-white'>
         <Head>
           <title>Redeem FC Players</title>
         </Head>

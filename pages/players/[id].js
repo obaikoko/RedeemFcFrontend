@@ -42,8 +42,8 @@ const Details = () => {
       ) : (
         <></>
       )}
-      <div className='container pt-5'>
-        <div className='card mt-4'>
+      <div className='container pt-5 '>
+        <div className='card mt-4 bg-transparent'>
           <div className='card-header bg-primary text-white'>
             <h3 className='card-title mb-0'>Player Details</h3>
           </div>
