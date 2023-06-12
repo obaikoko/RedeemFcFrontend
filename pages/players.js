@@ -22,22 +22,23 @@ const Players = () => {
     const data = await res.json();
     setPlayers(data);
   };
-
+ 
   if (status === 'authenticated') {
     return (
       <div className='pt-5'>
         <Head>
           <title>Redeem FC Players</title>
         </Head>
-        <div className='card-header bg-primary text-white'>
-          <h3 className='card-title mb-0 p-3'>Redeem FC Members
-          </h3>
-        </div>
+        
         {players ? (
           <div>
-            <table className='table table-hover'>
+            <div className='card-header bg-primary text-white'>
+              <h3 className='card-title mb-0 p-3'>Redeem FC Members</h3>
+            </div>
+            <table className='table table-hover table-striped'>
               <thead>
                 <tr>
+                  <th>#</th>
                   <th>Name</th>
                   <th>Nick Name</th>
                   <th>State of Origin</th>
@@ -48,9 +49,8 @@ const Players = () => {
               <tbody>
                 {players.map((player, index) => (
                   <tr key={player._id}>
-                    <td>
-                      [{1 + index}] {player.fullName}
-                    </td>
+                    <td>[{1 + index}]</td>
+                    <td>{player.fullName}</td>
                     <td>{player.userName}</td>
                     <td>{player.state}</td>
                     <td>{player.createdAt}</td>
@@ -84,14 +84,11 @@ const Players = () => {
                       Policy, Rules and Regulations
                     </button>
                   </Link>
-                 
                 </div>
               </>
             )}
           </div>
-        ) : (
-          <Spinner />
-        )}
+        ) : (<Spinner/>)}
       </div>
     );
   } else {

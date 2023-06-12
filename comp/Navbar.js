@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { useSession, signIn, signOut } from 'next-auth/react';
+
+import { useSession, signOut } from 'next-auth/react';
 
 const Navbar = () => {
   const { data: session } = useSession();
 
   return (
-    <div className='mb-5'>
+    <div style={{marginBottom: '30%'}}>
       <nav className='navbar  navbar-expand-lg bg-body-tertiary fixed-top '>
         <div className='container-fluid'>
           <div></div>
