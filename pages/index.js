@@ -1,6 +1,7 @@
 import Head from 'next/head';
-
+import { useSession, signOut } from 'next-auth/react';
 const Home = () => {
+    const { data: session } = useSession();
   return (
     <>
       <Head>
@@ -10,14 +11,17 @@ const Home = () => {
       </Head>
       <main>
         <header
-          className='hero-section hero-section-custom text-center text-light'
+          className=' container d-flex align-items-center justify-content-center hero-section hero-section-custom text-center text-light'
           style={{
             backgroundImage:
               "url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1686571605/depositphotos_42274529-stock-photo-a-player-shooting-on-goal_mxhvjy.webp')",
           }}
         >
-          <div className='container'>
-            <h1>Welcome to Redeem Football Club</h1>
+          <div className='container '>
+            <h1>
+              Welcome {session && session.user.name.split(' ')[1]} to Redeem
+              Football Club
+            </h1>
             <p className='lead'>
               Join us and be part of an amazing football journey
             </p>
@@ -27,11 +31,11 @@ const Home = () => {
           </div>
         </header>
 
-        <section className='image-gallery'>
-          <div className='container'>
-            <h2 className='text-center'>For the love of Football</h2>
+        <section className='container  p-5  image-gallery mt-2 '>
+          <div>
+            <h2 className='text-center mb-3'>For the love of Football</h2>
             <div className='row mx-auto'>
-              <div className='col-md-4'>
+              <div className='col-md-4 '>
                 <img
                   src='https://res.cloudinary.com/dzajrh9z7/image/upload/v1686572664/images_6_ml6zsd.jpg'
                   className='img-fluid img-thumbnail'
@@ -56,7 +60,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className='about-section bg-light mt-4'>
+        <section className='about-section  mt-4'>
           <div className='container'>
             <h2 className='text-center'>About Redeem Football Club</h2>
             <p>

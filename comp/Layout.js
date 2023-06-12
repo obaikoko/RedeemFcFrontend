@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 
 const layout = ({children}) => {
   return (
-    <div>
+    <div style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}>
         <Navbar/>
         {children}
     </div>

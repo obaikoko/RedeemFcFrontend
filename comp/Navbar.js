@@ -6,13 +6,13 @@ const Navbar = () => {
   const { data: session } = useSession();
 
   return (
-    <div style={{marginBottom: '30%'}}>
-      <nav className='navbar  navbar-expand-lg bg-body-tertiary fixed-top '>
+    <div >
+      <nav className='navbar  navbar-expand-lg bg-body-tertiary  '>
         <div className='container-fluid'>
           <div></div>
           <Link className='navbar-brand' href='/'>
             REDEEM FOOTBALL CLUB <br />
-            <p> {session && `Welcome ${session.user.name.split(' ')[1]}`}</p>
+           
           </Link>
 
           <button
